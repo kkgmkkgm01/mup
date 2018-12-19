@@ -1,27 +1,33 @@
 version: 2
-jobs: 
-  build: 
-    docker: 
-      - image: circleci/php:7.1-node-browsers
-        environment:
-          APP_ENV: circleci
-          APP_DEBUG: true
-#          DB_CONNECTION: sqlite
-#    working_directory: ~/laravel 
-    steps: 
-      - checkout 
-#      - run: sudo apt install -y libsqlite3-dev zlib1g-dev
-#      - run: sudo composer self-update
-#      - restore_cache: 
-#          keys:
-#            - composer-v1-{{ checksum "composer.lock" }}
-#            - composer-v1-
-#      - run: composer install
-#      - save_cache: 
-#          key: composer-v1-{{ checksum "composer.lock" }}
-#          paths:
-#            - vendor
-#      - run: touch database/database.sqlite
-#      - run: php artisan migrate
-#      - run: ./vendor/bin/phpunit 
-#      - run: php ./SampleTest.php
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/php:7.1-browsers
+      
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mysql:9.4
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "composer.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: composer install -n --prefer-dist
+
+      - save_cache:
+          paths:
+            - ./vendor
+          key: v1-dependencies-{{ checksum "composer.json" }}
+        
+      # run tests!
+      - run: phpunit
