@@ -18,15 +18,5 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
-    
-    public function testBasicTest2()
-    {
-        $this->visit('/')
-        ->see('テストタイトル')
-        ->dontSee('Rails');
-    }
-    
-
-
 
 }
