@@ -19,11 +19,6 @@ class ExampleTest extends TestCase
         $response->assertStatus(200);
     }
     
-    public function testBoard()
-    {
-        $this->visit('/posts')//  postsページにアクセスしてみる
-        ->see('Recent Comment');//           「Recent Comment」という文字列が見える
-    }
 
 
 
