@@ -21,8 +21,9 @@ class ExampleTest extends TestCase
     
     public function testBasicTest2()
     {
-                $this->visit('/')
-        ->see('テストタイトル');
+        $this->visit('/')
+        ->see('テストタイトル')
+        ->dontSee('Rails');
     }
     
 
