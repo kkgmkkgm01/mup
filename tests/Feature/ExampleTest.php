@@ -21,9 +21,8 @@ class ExampleTest extends TestCase
     
     public function testBasicTest2()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+                $this->visit('/')
+        ->see('テストタイトル');
     }
     
 
