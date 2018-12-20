@@ -11,7 +11,8 @@ jobs:
       # - image: circleci/mysql:9.4
     environment:
       - APP_ENV: testing
-      - APP_KEY: "base64:jigaIaW1vv9WAh15WdQELPkrD85d1p4L5SK2mUmuLfQ="
+      - APP_KEY: base64:jigaIaW1vv9WAh15WdQELPkrD85d1p4L5SK2mUmuLfQ=
+      - APP_URL: http://localhost
     working_directory: ~/repo
 
     steps:
