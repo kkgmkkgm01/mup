@@ -49,3 +49,5 @@ jobs:
       - run:
           name: Run Laravel Dusk Tests
           command: php artisan dusk
+          environment:
+            APP_URL: http://localhost:8000
