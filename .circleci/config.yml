@@ -26,6 +26,10 @@ jobs:
           - v1-dependencies-
 
       - run: composer install -n --prefer-dist
+      - run:
+          name: Setup Laravel
+          command: |
+            cp .env.circleci .env
       - save_cache:
           paths:
             - ./vendor
