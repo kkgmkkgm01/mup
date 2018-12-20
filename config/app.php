@@ -147,6 +147,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Laravel\Dusk\DuskServiceProvider::class,
 
         /*
          * Package Service Providers...
