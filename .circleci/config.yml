@@ -17,6 +17,9 @@ jobs:
     steps:
       - checkout
       - run: sudo apt install -y postgresql-client || true
+      
+      # migration, seeding
+      - run: php artisan migrate --seed
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -32,8 +35,6 @@ jobs:
             - ./vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
         
-      # migration, seeding
-      - run: docker-compose run app php artisan migrate --seed
 
       # run tests!
       - run: vendor/bin/phpunit
