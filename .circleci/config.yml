@@ -25,10 +25,6 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      #マイグレーション,シーディング
-      - run: php artisan migrate
-　    - run: php artisan db:seed
-
       - run:
           name: Setup Laravel
           command: cp .env.circleci .env
@@ -38,6 +34,10 @@ jobs:
             - ./vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
         
+      #マイグレーション,シーディング
+      - run: php artisan migrate
+　    - run: php artisan db:seed
+
       # run tests!
       - run: vendor/bin/phpunit
       - run:
