@@ -19,6 +19,7 @@ jobs:
       - run: sudo apt install -y postgresql-9.3 || true
       - run: sudo apt install -y postgresql-client || true
       
+      - checkout
       # Download and cache dependencies
       - restore_cache:
           keys:
