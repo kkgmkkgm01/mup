@@ -17,6 +17,7 @@ jobs:
 
     steps:
       - checkout
+      - run: sudo apt install -y postgresql-client || true
       # Download and cache dependencies
       - restore_cache:
           keys:
