@@ -25,17 +25,12 @@ jobs:
           name: Install and enable pdo_pgsql php extension
           command: |
             sudo apt-get update && sudo apt-get install libpq-dev
-            sudo docker-php-ext-install pdo_pgsql && sudo docker-php-ext-enable pdo_pgsql
       # Download and cache dependencies
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "composer.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-      - run:
-          name: Prep the database and user, install extensions etc.
-          command: |
-            sudo -u postgres psql -h 127.0.0.1 -U postgres -c "create database laravel57"
       - run:
           name: Setup Laravel
           command: cp .env.circleci .env
