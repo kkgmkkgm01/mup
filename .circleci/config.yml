@@ -25,15 +25,14 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run:
-          name: Setup Laravel
-          command: cp .env.circleci .env
-      - run: composer install -n --prefer-dist
-
       #マイグレーション,シーディング
       - run: php artisan migrate
 　    - run: php artisan db:seed
 
+      - run:
+          name: Setup Laravel
+          command: cp .env.circleci .env
+      - run: composer install -n --prefer-dist
       - save_cache:
           paths:
             - ./vendor
