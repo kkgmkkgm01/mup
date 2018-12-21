@@ -22,11 +22,8 @@ jobs:
           name: Install PHP extensions
           command: sudo docker-php-ext-install pdo_mysql
       - run:
-          name: Start database server
-          command: sudo service mysql start
-      - run:
-          name: Create non-admin user
-          command: sudo mysqladmin --user=root password "mRto9Ec1.Gqw"
+          name: Install mysqli extension
+          command: sudo docker-php-ext-install mysqli
       - checkout
       # Download and cache dependencies
       - restore_cache:
