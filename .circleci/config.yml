@@ -21,22 +21,20 @@ jobs:
       - run:
           name: Install PHP extensions
           command: sudo docker-php-ext-install pdo_mysql
+      - run:
+          name: Start database server
+          command: sudo service mysql start
+      - run:
+          name: Create non-admin user
+          command: sudo mysqladmin --user=root password "mRto9Ec1.Gqw"
+      - checkout
       # Download and cache dependencies
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "composer.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-      - run:
-          name: Start database server
-          command: |
-            sudo service mysql start
-            sleep 2
-            ps aux | grep mysql
-      - run:
-          name: Create non-admin user
-          command: |
-            sudo mysqladmin --user=root password "mRto9Ec1.Gqw"
+
       - run:
           name: Setup Laravel
           command: cp .env.circleci .env
