@@ -28,6 +28,16 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
       - run:
+          name: Start database server
+          command: |
+            sudo service mysql start
+            sleep 2
+            ps aux | grep mysql
+      - run:
+          name: Create non-admin user
+          command: |
+            sudo mysqladmin --user=root password "mRto9Ec1.Gqw"
+      - run:
           name: Setup Laravel
           command: cp .env.circleci .env
       - run: composer install -n --prefer-dist
