@@ -16,13 +16,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-
-
       - run: sudo apt install -y postgresql-client || true
-      - run: apt-get update && apt-get -y install git unzip zlib1g-dev libpq-dev
-      - checkout
-      - run: docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
-      - run: docker-php-ext-install pdo pdo_pgsql zip
       # Download and cache dependencies
       - restore_cache:
           keys:
