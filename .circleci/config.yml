@@ -32,7 +32,7 @@ jobs:
           key: v1-dependencies-{{ checksum "composer.json" }}
         
       # migration, seeding
-      - run: php artisan migrate --seed
+      - run: php artisan migrate
 
       # run tests!
       - run: vendor/bin/phpunit
