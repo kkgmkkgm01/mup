@@ -9,15 +9,9 @@ jobs:
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       - image: circleci/mysql:9.4
-    environment:
+    # environment:
 #      - APP_ENV: testing
 #      - APP_URL: http://localhost
-      - DB_CONNECTION: pgsql
-      - DB_HOST: 127.0.0.1
-      - DB_PORT: 5432
-      - DB_DATABASE: laravel57
-      - DB_USERNAME: postgres
-      - DB_PASSWORD: G3k/A.6kBdi9
     working_directory: ~/repo
     steps:
       - checkout
