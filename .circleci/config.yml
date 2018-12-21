@@ -17,11 +17,6 @@ jobs:
 
     steps:
       - checkout
-      - run:
-          name: Install PostgreSQL client tools
-          command: |
-            sudo apt-get update && sudo apt-get install postgresql-client
-      - run: apt-get update && apt-get -y install git unzip zlib1g-dev libpq-dev
       # Download and cache dependencies
       - restore_cache:
           keys:
