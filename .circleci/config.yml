@@ -34,9 +34,8 @@ jobs:
             - ./vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
         
-      #マイグレーション,シーディング
-      - run: php artisan migrate
-　    - run: php artisan db:seed
+      # migration, seeding
+      - run: php artisan migrate --seed
 
       # run tests!
       - run: vendor/bin/phpunit
