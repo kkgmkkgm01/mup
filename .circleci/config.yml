@@ -1,24 +1,19 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/circleci-demo-ruby-rails
-    
-    # Primary container image where all commands run
-    
     docker:
+      # specify the version you desire here
       - image: circleci/php:7.1-browsers
-        environment:
-          RAILS_ENV: test
-          PGHOST: 127.0.0.1
-          PGUSER: root
-    
-    # Service container image available at `host: localhost`
-    
-      - image: circleci/postgres:9.6.2-alpine
-        environment:
-          POSTGRES_USER: root
-          POSTGRES_DB: circle-test_test
-        
+      - image: circleci/postgres:11.1
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mysql:9.4
+#    environment:
+#      - APP_ENV: testing
+#      - APP_KEY: base64:jigaIaW1vv9WAh15WdQELPkrD85d1p4L5SK2mUmuLfQ=
+#      - APP_URL: http://localhost
+    working_directory: ~/repo
     steps:
       - checkout
 
