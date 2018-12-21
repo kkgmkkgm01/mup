@@ -29,6 +29,11 @@ jobs:
           name: Setup Laravel
           command: cp .env.circleci .env
       - run: composer install -n --prefer-dist
+
+      #マイグレーション,シーディング
+      - run: php artisan migrate
+　    - run: php artisan db:seed
+
       - save_cache:
           paths:
             - ./vendor
